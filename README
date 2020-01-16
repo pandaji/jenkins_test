@@ -1,0 +1,14 @@
+build server
+1. it might be good to create a test user to access github
+2. no static public ip. github webhook can't be used. alternative measure is run periodic build from jenkins
+3. host a private registry on build server.
+4. jenkins pipeline
+ - pull source code from github
+ - build docker image from dockerfile
+ - push the docker image to registry
+
+test server
+1. host test data
+2. in the same local network with build server.
+3. no connection to the internet
+4. configure the network to allow only pulling docker images from private registry and script from build server
