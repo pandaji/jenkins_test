@@ -9,13 +9,11 @@ import hudson.tasks.junit.CaseResult
 
 
 def notifyStarted() {
-    slackSend (color: 'good', message: "The build on ${currentBuild.fullDisplayName} has just *started*. \n Good Luck! :smile:")
+    slackSend (color: 'good', message: "The build on ${currentBuild.fullDisplayName} has just *STARTED*. \n Good Luck! :smile:")
 }
 
 def notifySuccessful() {
-		def msg = "The build on ${currentBuild.fullDisplayName} completed *successfully*. \n" +
-						  "Total Build Time: ${currentBuild.durationString}. \n" +
-							"Well done! :tada:"
+		def msg = "The build on ${currentBuild.fullDisplayName} completed *SUCCESSFULLY*. \nTotal Build Time: ${currentBuild.durationString}. \nWell done! :tada:"
 
     slackSend (color: 'good', message: ${msg})
 }
@@ -38,11 +36,7 @@ def notifyFailed() {
 			failedTestsString = failedTestsString + "```"
 	}
 
-	def msg = "The build on ${currentBuild.fullDisplayName} *failed*. \n" +
-						"Total Build Time: ${currentBuild.durationString}. \n" +
-						"Please try again! :see_no_evil: \n\n" +
-						"*Console Msg:* \n" +
-						failedTestsString
+	def msg = "The build on ${currentBuild.fullDisplayName} *FAILED*. \nTotal Build Time: ${currentBuild.durationString}. \nPlease try again! :see_no_evil: \n\n*Console Msg:* \n" + failedTestsString
   slackSend (color: 'danger', message: ${msg})
 
 
