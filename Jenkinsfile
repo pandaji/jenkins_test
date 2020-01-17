@@ -20,8 +20,8 @@ def notifySuccessful() {
     slackSend (color: 'good', message: ${msg})
 }
 
-@NonCPS
-def getFailedTests = { ->
+def notifyFailed() {
+
 	def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
 	def failedTestsString = "```"
 
@@ -37,16 +37,12 @@ def getFailedTests = { ->
 			}
 			failedTestsString = failedTestsString + "```"
 	}
-	return failedTestsString
-}
-
-def notifyFailed() {
 
 	def msg = "The build on ${currentBuild.fullDisplayName} *failed*. \n" +
 						"Total Build Time: ${currentBuild.durationString}. \n" +
 						"Please try again! :see_no_evil: \n\n" +
 						"*Console Msg:* \n" +
-						getFailedTests()
+						failedTestsString
   slackSend (color: 'danger', message: ${msg})
 
 
