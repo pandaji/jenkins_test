@@ -37,7 +37,7 @@ pipeline {
 
     	stage('Push Docker Image') {
 				steps {
-    			sh 'docker push localhos:37648/jh_jenkins_test:1.0'
+    			sh 'docker push localhost:37648/jh_jenkins_test:1.0'
 				}
     	}
     }
