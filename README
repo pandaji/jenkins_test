@@ -7,6 +7,8 @@ build server
  - build docker image from dockerfile
  - push the docker image to registry
 
+5. grpc call to launch test on test server
+
 test server
 1. host test data
 2. in the same local network with build server.
