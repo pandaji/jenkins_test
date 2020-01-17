@@ -59,13 +59,13 @@ pipeline {
 
     	stage('Build Docker Image') {
 				steps {
-    			sh 'docker build -t localhos:37648/jh_jenkins_test:1.0 .'
+    			sh 'docker build -t localhost:37648/jh_jenkins_test:1.0 .'
 				}
     	}
 
     	stage('Push Docker Image') {
 				steps {
-    			sh 'docker push localhost:37648/jh_jenkins_test:1.0'
+    			sh 'docker push localhos:37648/jh_jenkins_test:1.0'
 				}
     	}
     }
