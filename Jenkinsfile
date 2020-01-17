@@ -10,7 +10,7 @@ def notifySuccessful() {
 def notifyFailed() {
 	slackSend (color: 'danger', message: "The build on ${currentBuild.fullDisplayName} *FAILED*. \nTotal Build Time: ${currentBuild.durationString}. \n\nPlease try again! :see_no_evil:")
 
-	sh 'cat ${BUILD_URL}/consoleText > failure_report.txt'
+	sh 'curl ${BUILD_URL}/consoleText > failure_report.txt'
 	slackUploadFile filePath: 'failure_report.txt', initialComment:  "Failure report on ${currentBuild.fullDisplayName}"
 }
 
