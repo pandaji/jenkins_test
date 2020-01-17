@@ -12,7 +12,7 @@ def notifyFailed() {
 
 	sh 'curl ${BUILD_URL}/consoleText > failure_report.txt'
 
-	slackUploadFile filePath: 'failure_report.txt', initialComment:  "Failure report on ${currentBuild.fullDisplayName}"
+	slackUploadFile filePath: 'hello_world.py', initialComment:  "Failure report on ${currentBuild.fullDisplayName}"
 }
 
 
