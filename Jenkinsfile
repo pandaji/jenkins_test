@@ -9,11 +9,11 @@ import hudson.tasks.junit.CaseResult
 
 
 def notifyStarted() {
-    slackSend (color: 'good', message: "The build on ${currentBuild.fullDisplayName} has just *STARTED*. \n Good Luck! :smile:")
+    slackSend (color: 'good', message: "The build on ${currentBuild.fullDisplayName} has just *STARTED*. \n\nGood Luck! :smile:")
 }
 
 def notifySuccessful() {
-    slackSend (color: 'good', message: "The build on ${currentBuild.fullDisplayName} completed *SUCCESSFULLY*. \nTotal Build Time: ${currentBuild.durationString}. \nWell done! :tada:")
+    slackSend (color: 'good', message: "The build on ${currentBuild.fullDisplayName} completed *SUCCESSFULLY*. \nTotal Build Time: ${currentBuild.durationString}. \n\nWell done! :tada:")
 }
 
 def notifyFailed() {
@@ -34,7 +34,7 @@ def notifyFailed() {
 			failedTestsString = failedTestsString + "```"
 	}
 
-	slackSend (color: 'danger', message: "The build on ${currentBuild.fullDisplayName} *FAILED*. \nTotal Build Time: ${currentBuild.durationString}. \nPlease try again! :see_no_evil: \n\n*Console Msg:* \n" + failedTestsString)
+	slackSend (color: 'danger', message: "The build on ${currentBuild.fullDisplayName} *FAILED*. \nTotal Build Time: ${currentBuild.durationString}. \n\nPlease try again! :see_no_evil: \n\n*Console Msg:* \n" + failedTestsString)
 
 
 }
@@ -59,7 +59,7 @@ pipeline {
 
     	stage('Build Docker Image') {
 				steps {
-    			sh 'docker build -t localhost:37648/jh_jenkins_test:1.0 .'
+    			sh 'docker build -t localhos:37648/jh_jenkins_test:1.0 .'
 				}
     	}
 
