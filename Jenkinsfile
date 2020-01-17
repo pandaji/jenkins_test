@@ -13,9 +13,7 @@ def notifyStarted() {
 }
 
 def notifySuccessful() {
-		def msg = "The build on ${currentBuild.fullDisplayName} completed *SUCCESSFULLY*. \nTotal Build Time: ${currentBuild.durationString}. \nWell done! :tada:"
-
-    slackSend (color: 'good', message: ${msg})
+    slackSend (color: 'good', message: "The build on ${currentBuild.fullDisplayName} completed *SUCCESSFULLY*. \nTotal Build Time: ${currentBuild.durationString}. \nWell done! :tada:")
 }
 
 def notifyFailed() {
@@ -36,8 +34,7 @@ def notifyFailed() {
 			failedTestsString = failedTestsString + "```"
 	}
 
-	def msg = "The build on ${currentBuild.fullDisplayName} *FAILED*. \nTotal Build Time: ${currentBuild.durationString}. \nPlease try again! :see_no_evil: \n\n*Console Msg:* \n" + failedTestsString
-  slackSend (color: 'danger', message: ${msg})
+	slackSend (color: 'danger', message: "The build on ${currentBuild.fullDisplayName} *FAILED*. \nTotal Build Time: ${currentBuild.durationString}. \nPlease try again! :see_no_evil: \n\n*Console Msg:* \n" + failedTestsString)
 
 
 }
